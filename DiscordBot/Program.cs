@@ -21,6 +21,12 @@ namespace DiscordBot
                 Console.WriteLine(message);
                 return Task.CompletedTask;
             };
+            
+            client.MessageReceived += async message =>
+            {
+                if (message.Content == "!ping")
+                    await message.Channel.SendMessageAsync("Pong!");
+            };
 
             var token = File.ReadAllText("token.txt");
             await client.LoginAsync(TokenType.Bot, token);
