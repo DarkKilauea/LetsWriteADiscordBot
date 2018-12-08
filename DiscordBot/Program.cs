@@ -45,7 +45,7 @@ namespace DiscordBot
                     Console.WriteLine("Failed to run command: {0}", result.ErrorReason);
             };
 
-            var token = File.ReadAllText("token.txt");
+            var token = File.ReadAllText("token.txt").Trim();
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
 
